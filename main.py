@@ -11,8 +11,8 @@ driver=webdriver.Chrome(PATH)
 driver.get("https://mtamn.mta.ac.il/yedion/fireflyweb.aspx")
 print('Enter your kours kod (קוד הקורס):')
 kod= input()
-#kod=121120
-#kod=121115
+#kod=142203
+#kod=50003
 uname="edenbm"
 password="12Phoenixmed34"
 msg_box=driver.find_element_by_xpath("//input[@id='R1C1']")
@@ -51,13 +51,17 @@ else:
    print('error,they need to be a btn course to continue')
 
 i=1
-driver.find_element_by_xpath("//div[@class='modal-footer']").click()
-driver.refresh()
+# driver.find_element_by_xpath("//div[@class='modal-footer']").click()
+# driver.refresh()
 
 while(True):
-    if (len(driver.find_elements_by_xpath("//div[@class='modal-footer']")) > 0):
-        driver.find_element_by_xpath("//div[@class='modal-footer']").click()
+    if (len(driver.find_elements_by_xpath("//span[@class='MessageInScreen']")) > 0):
+        # //span[@class='MessageInScreen']
+        # //div[@class='modal-footer']
+        # driver.find_element_by_xpath("//div[@class='modal-footer']").click()
         driver.refresh()
+    elif (len(driver.find_elements_by_xpath("//span[@class='fas fa-pencil-alt']")) > 0):
+        driver.find_element_by_xpath("//span[@class='fas fa-pencil-alt']").click()
     else:break
 
 
